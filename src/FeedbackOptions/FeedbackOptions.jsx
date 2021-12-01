@@ -1,7 +1,7 @@
 import s from "./FeedBack.module.css";
 function FeedbackOptions({ good, neutral, bad }) {
   return (
-    <div>
+    <>
       <button type="button" onClick={good} className={s.button}>
         Good
       </button>
@@ -11,7 +11,7 @@ function FeedbackOptions({ good, neutral, bad }) {
       <button type="button" onClick={bad} className={s.button}>
         Bad
       </button>
-    </div>
+    </>
   );
 }
 
