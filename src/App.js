@@ -1,8 +1,9 @@
 import { Component } from "react";
 import Section from "./Section/Section";
+import FeedbackOptions from "./FeedbackOptions/FeedbackOptions";
 import "modern-normalize/modern-normalize.css";
 import "./index.css";
-//import s from "./FeedBack.module.css";
+
 class App extends Component {
   static defaultProps = {
     initialGoog: 0,
@@ -48,28 +49,11 @@ class App extends Component {
     return (
       <div>
         <Section title="Please leave feedback"></Section>
-
-        <button
-          type="button"
-          onClick={this.handleIncrementGood}
-          /* className={s.button} */
-        >
-          Good
-        </button>
-        <button
-          type="button"
-          onClick={this.handleIncrementNeutral}
-          /* className={s.button} */
-        >
-          Neutral
-        </button>
-        <button
-          type="button"
-          onClick={this.handleIncrementBad}
-          /* className={s.button} */
-        >
-          Bad
-        </button>
+        <FeedbackOptions
+          good={this.handleIncrementGood}
+          neutral={this.handleIncrementNeutral}
+          bad={this.handleIncrementBad}
+        />
         <section>
           <h2>Statistics</h2>
           <ul>
