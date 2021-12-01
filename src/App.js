@@ -1,6 +1,7 @@
 import { Component } from "react";
 import Section from "./Section/Section";
 import FeedbackOptions from "./FeedbackOptions/FeedbackOptions";
+import Statistics from "./Statistics/Statistics";
 import "modern-normalize/modern-normalize.css";
 import "./index.css";
 
@@ -54,28 +55,13 @@ class App extends Component {
           neutral={this.handleIncrementNeutral}
           bad={this.handleIncrementBad}
         />
-        <section>
-          <h2>Statistics</h2>
-          <ul>
-            <li>
-              Good:<span>{this.state.good}</span>
-            </li>
-            <li>
-              Neutral:<span>{this.state.neutral}</span>
-            </li>
-            <li>
-              Bad:<span>{this.state.bad}</span>
-            </li>
-            <li>
-              Total:
-              <span>{this.countTotalFeedback()}</span>
-            </li>
-            <li>
-              Positive feedback:
-              <span>{this.countPositiveFeedbackPercentage()} %</span>
-            </li>
-          </ul>
-        </section>
+        <Statistics
+          good={this.state.good}
+          neutral={this.state.neutral}
+          bad={this.state.bad}
+          total={this.countTotalFeedback()}
+          positivePercentage={this.countPositiveFeedbackPercentage()}
+        />
       </div>
     );
   }
