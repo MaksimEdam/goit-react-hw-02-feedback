@@ -17,26 +17,11 @@ class App extends Component {
     neutral: this.props.initialNatural,
     bad: this.props.initialBad,
   };
-  handleIncrementGood = () => {
-    this.setState((prevState) => {
-      return {
-        good: prevState.good + 1,
-      };
-    });
-  };
-  handleIncrementNeutral = () => {
-    this.setState((prevState) => {
-      return {
-        neutral: prevState.neutral + 1,
-      };
-    });
-  };
-  handleIncrementBad = () => {
-    this.setState((prevState) => {
-      return {
-        bad: prevState.bad + 1,
-      };
-    });
+  onLeaveFeedback = (e) => {
+    const name = e.target.name;
+    this.setState((prevState) => ({
+      [name]: prevState[name] + 1,
+    }));
   };
   countTotalFeedback = () => {
     const result = this.state.good + this.state.bad + this.state.neutral;
@@ -49,13 +34,13 @@ class App extends Component {
 
   render() {
     const total = this.countTotalFeedback();
+    const objKey = Object.keys(this.state);
     return (
       <div>
         <Section title="Please leave feedback"></Section>
         <FeedbackOptions
-          good={this.handleIncrementGood}
-          neutral={this.handleIncrementNeutral}
-          bad={this.handleIncrementBad}
+          options={objKey}
+          onLeaveFeedback={this.onLeaveFeedback}
         />
         {total === 0 ? (
           <Notification message="No feedback given" />
