@@ -1,8 +1,8 @@
 import { Component } from "react";
-import Section from "./Section/Section";
-import FeedbackOptions from "./FeedbackOptions/FeedbackOptions";
-import Notification from "./Notification/Notification";
-import Statistics from "./Statistics/Statistics";
+import Section from "./Section";
+import FeedbackOptions from "./FeedbackOptions";
+import Notification from "./Notification";
+import Statistics from "./Statistics";
 import "modern-normalize/modern-normalize.css";
 import "./index.css";
 
@@ -42,9 +42,7 @@ class App extends Component {
           options={objKey}
           onLeaveFeedback={this.onLeaveFeedback}
         />
-        {total === 0 ? (
-          <Notification message="No feedback given" />
-        ) : (
+        {total && (
           <Statistics
             good={this.state.good}
             neutral={this.state.neutral}
@@ -53,6 +51,7 @@ class App extends Component {
             positivePercentage={this.countPositiveFeedbackPercentage()}
           />
         )}
+        {!total && <Notification message="No feedback given" />}
       </div>
     );
   }
